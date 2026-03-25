@@ -1,0 +1,13 @@
+logistics_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth                        # usa gcloud auth application-default login
+      project: gcp-real-time-logistics-cont
+      dataset: logistics_staging           # dataset por defecto (cada capa lo sobreescribe)
+      location: us-central1
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+      retries: 3

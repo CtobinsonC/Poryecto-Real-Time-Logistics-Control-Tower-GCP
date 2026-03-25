@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fct_fleet_status
+    description: >
+      Tabla final con la última posición conocida y estado actual de cada vehículo.
+      Una fila por vehículo. Se actualiza de forma incremental con merge.
+    columns:
+      - name: vehicle_id
+        description: "Identificador único del vehículo (PK)"
+        tests:
+          - not_null
+          - unique
+
+      - name: last_seen_ts
+        description: "Timestamp del último evento registrado"
+        tests:
+          - not_null
+
+      - name: status
+        description: "Estado actual del vehículo"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['En movimiento', 'Detenido', 'Alerta']
+
+      - name: fuel_level_pct
+        description: "Nivel de combustible actual (0-100%)"
+        tests:
+          - not_null
+
+      - name: latitude
+        description: "Última latitud conocida"
+        tests:
+          - not_null
+
+      - name: longitude
+        description: "Última longitud conocida"
+        tests:
+          - not_null
+
+      - name: zone_hash
+        description: "Zona geoespacial (ST_GEOHASH resolución 6 ≈ 1.2km)"
+
+      - name: updated_at
+        description: "Timestamp de la última actualización de este registro en dbt"
+        tests:
+          - not_null

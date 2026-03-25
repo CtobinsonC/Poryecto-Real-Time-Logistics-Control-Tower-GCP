@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: logistics_raw
+    database: gcp-real-time-logistics-cont
+    schema: logistics_raw
+    description: "Datos crudos de telemetría de la flota provenientes de Pub/Sub"
+    tables:
+      - name: telemetry_events
+        description: "Eventos GPS de la flota en tiempo real"
+        columns:
+          - name: vehicle_id
+            description: "Identificador único del vehículo"
+            tests:
+              - not_null
+          - name: event_timestamp
+            description: "Timestamp del evento GPS"
+            tests:
+              - not_null
+          - name: latitude
+            description: "Latitud WGS-84"
+          - name: longitude
+            description: "Longitud WGS-84"
+          - name: speed
+            description: "Velocidad en km/h"
+          - name: fuel_level
+            description: "Nivel de combustible (0-100%)"

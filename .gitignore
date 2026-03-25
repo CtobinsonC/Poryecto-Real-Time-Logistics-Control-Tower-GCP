@@ -32,6 +32,7 @@ injector/.cache/
 # dbt
 dbt/target/
 dbt/logs/
+dbt/dbt_packages/
 dbt/.user.yml
 
 # pytest / coverage
