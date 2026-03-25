@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment / secrets — NUNCA committear
+.env
+*.env.local
+
+# Injector cache (dataset NYC Taxi descargado localmente)
+injector/.cache/
+
+# dbt
+dbt/target/
+dbt/logs/
+dbt/.user.yml
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# GCP credentials (nunca en repositorio)
+*.json
+service-account*.json
+application_default_credentials.json

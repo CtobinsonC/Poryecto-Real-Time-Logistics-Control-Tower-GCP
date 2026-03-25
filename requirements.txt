@@ -1,0 +1,78 @@
+# =============================================================================
+# Real-Time Logistics Control Tower — GCP
+# Dependencies by phase
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# FASE 1: GCP Core & Ingesta Raw
+# -----------------------------------------------------------------------------
+
+# Google Cloud SDKs
+google-cloud-pubsub==2.21.4
+google-cloud-bigquery==3.25.0
+google-cloud-bigquery-storage==2.26.0
+google-cloud-storage==2.18.2
+google-cloud-secret-manager==2.20.2
+
+# Cloud Functions local development / framework
+functions-framework==3.8.1
+
+# Apache Beam / Dataflow (ingesta escalable)
+apache-beam[gcp]==2.60.0
+
+# BigQuery helpers
+pyarrow==16.1.0          # apache-beam requiere pyarrow<17.0.0
+db-dtypes==1.3.0
+
+# Data manipulation (script inyector)
+pandas==2.2.3
+numpy==1.26.4           # apache-beam requiere numpy<1.27.0
+
+# HTTP requests (descarga dataset NYC Taxi)
+requests==2.32.3
+httpx==0.27.2
+
+# Geospatial — conversión coordenadas a tipo GEOGRAPHY
+shapely==2.0.6
+
+# H3 — indexación hexagonal para análisis de calor (Fase 2)
+h3==3.7.7
+
+# -----------------------------------------------------------------------------
+# FASE 2: Ingeniería de Datos (dbt)
+# -----------------------------------------------------------------------------
+
+dbt-bigquery==1.8.3
+dbt-core==1.8.7
+
+# -----------------------------------------------------------------------------
+# FASE 3: Backend API (FastAPI + Cloud Run)
+# -----------------------------------------------------------------------------
+
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.9.2
+pydantic-settings==2.6.1
+
+# Caching en memoria
+cachetools==5.5.0
+
+# CORS
+starlette==0.41.3
+
+# -----------------------------------------------------------------------------
+# FASE 5: Testing (CI/CD)
+# -----------------------------------------------------------------------------
+
+pytest==8.3.3
+pytest-asyncio==0.24.0
+# httpx ya declarado arriba (Fase 1) — sirve también como cliente async en tests
+pytest-cov==5.0.0
+
+# -----------------------------------------------------------------------------
+# Utilidades generales
+# -----------------------------------------------------------------------------
+
+python-dotenv==1.0.1
+loguru==0.7.2
+tenacity==9.0.0        # reintentos con backoff (resiliencia en ingesta)

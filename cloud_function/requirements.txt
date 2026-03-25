@@ -1,0 +1,7 @@
+# Cloud Function runtime requirements
+# Versiones fijadas para reproducibilidad en el entorno de Cloud Functions
+
+functions-framework==3.8.1
+google-cloud-bigquery==3.25.0
+loguru==0.7.2
+tenacity==9.0.0
