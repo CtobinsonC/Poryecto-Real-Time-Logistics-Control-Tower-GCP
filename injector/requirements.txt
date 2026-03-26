@@ -1,0 +1,8 @@
+pandas==2.2.1
+pyarrow==15.0.0
+fastparquet==2024.2.0
+requests==2.31.0
+google-cloud-pubsub==2.20.0
+loguru==0.7.2
+tenacity==8.2.3
+python-dotenv==1.0.1
