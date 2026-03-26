@@ -225,14 +225,19 @@ def run(rate: int, limit: int) -> None:
                     return
 
                 payload = row.to_dict()
+                
+                # REGLA DE ORO SERVERLESS: Sustituir el tiempo histórico del Parquet por el tiempo FISICO actual para que el modelo Incremental en dbt no descarte los puntos
+                payload['timestamp'] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
+
                 try:
                     publish_message(publisher, topic_path, payload)
                     total_sent += 1
                     if total_sent % 100 == 0:
                         logger.info(
-                            f" {total_sent:,} mensajes publicados | "
-                            f" {total_errors} errores | "
-                            f"Último vehicle: {payload['vehicle_id']}"
+                            f" {total_sent:,} mensajes | "
+                            f" Errores: {total_errors} | "
+                            f" Vehicle: {payload['vehicle_id']} | "
+                            f" Hora Real: {payload['timestamp']}"
                         )
                 except Exception as e:
                     total_errors += 1
