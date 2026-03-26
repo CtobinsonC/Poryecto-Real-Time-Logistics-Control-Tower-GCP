@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic"
 import KPICards from "@/components/KPICards"
+import KPIGraphs from "@/components/KPIGraphs"
 
 // Leaflet requiere acceso directo al objeto 'window' del navegador.
 // En Next.js App Router (Server components by default), forzamos la carga exclusiva en Cliente:
@@ -40,7 +41,10 @@ export default function Home() {
           {/* Tarjetas Superiores */}
           <KPICards />
           
-          {/* Mapa Analítico */}
+          {/* Gráficas Analíticas con Recharts */}
+          <KPIGraphs />
+
+          {/* Mapa Analítico Interactivo */}
           <LiveMap />
         </section>
         

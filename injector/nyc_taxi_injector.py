@@ -52,10 +52,10 @@ NYC_TAXI_URL = os.getenv(
     "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet",
 )
 
-# NYC Taxi: bounding box aproximado de NYC para validar coordenadas
+# NYC Taxi: bounding box ajustado estrictamente a Manhattan para evitar coordenadas en el océano
 NYC_BBOX = {
-    "lat_min": 40.4774, "lat_max": 40.9176,
-    "lon_min": -74.2591, "lon_max": -73.7004,
+    "lat_min": 40.7000, "lat_max": 40.8500,
+    "lon_min": -74.0200, "lon_max": -73.9300,
 }
 
 # Número de vehículos únicos a simular (VendorID tiene pocos valores únicos)
